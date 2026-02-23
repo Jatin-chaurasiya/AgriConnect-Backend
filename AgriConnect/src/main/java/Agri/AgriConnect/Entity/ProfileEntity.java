@@ -35,7 +35,10 @@ public class ProfileEntity {
     private String language;
 
     @Column(nullable = false)
-    private String role;  
+    private String role;
+    
+    @Column(name = "profile_image_url")
+    private String profileImageUrl;
 
     @CreationTimestamp
     @Column(updatable = false)
@@ -45,4 +48,3 @@ public class ProfileEntity {
     private LocalDateTime updatedAt;
 
 }
-

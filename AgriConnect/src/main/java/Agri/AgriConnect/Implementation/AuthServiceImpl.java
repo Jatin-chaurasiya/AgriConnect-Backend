@@ -3,6 +3,7 @@ package Agri.AgriConnect.Implementation;
 
 import Agri.AgriConnect.Dto.AuthResponseDto;
 import Agri.AgriConnect.Dto.LoginRequestDto;
+import Agri.AgriConnect.Dto.MessageResponseDto;
 import Agri.AgriConnect.Dto.RegisterRequestDto;
 import Agri.AgriConnect.Entity.ProfileEntity;
 import Agri.AgriConnect.Repository.ProfileRepository;
@@ -21,7 +22,7 @@ public class AuthServiceImpl implements AuthService {
     private final JwtUtil jwtUtil;
 
     @Override
-    public String register(RegisterRequestDto request) {
+    public MessageResponseDto register(RegisterRequestDto request) {
 
         if (profileRepository.existsByEmail(request.getEmail())) {
             throw new RuntimeException("Email already exists");
@@ -37,11 +38,13 @@ public class AuthServiceImpl implements AuthService {
                 .password(passwordEncoder.encode(request.getPassword()))
                 .language(request.getLanguage())
                 .role(request.getRole())
+                .profileImageUrl(request.getProfileImageUrl())
                 .build();
+
 
         profileRepository.save(profile);
 
-        return "User registered successfully";
+        return new MessageResponseDto("User registered successfully");
     }
 
     @Override

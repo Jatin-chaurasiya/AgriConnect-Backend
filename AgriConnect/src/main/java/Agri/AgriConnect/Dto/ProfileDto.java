@@ -3,12 +3,10 @@ package Agri.AgriConnect.Dto;
 import lombok.Data;
 
 @Data
-public class RegisterRequestDto {
+public class ProfileDto {
     private String username;
     private String email;
-    private String password;
+    private String role;
     private String language;
     private String profileImageUrl;
-    private String role;
 }
-
