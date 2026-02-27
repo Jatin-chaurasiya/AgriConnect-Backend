@@ -3,6 +3,7 @@ package Agri.AgriConnect.Implementation;
 import Agri.AgriConnect.Entity.Scheme;
 import Agri.AgriConnect.Enum.Category;
 import Agri.AgriConnect.Enum.SchemeType;
+import Agri.AgriConnect.Enum.State;
 import Agri.AgriConnect.Repository.SchemeRepository;
 import Agri.AgriConnect.Service.SchemeService;
 import Agri.AgriConnect.scheme.SchemeSpecification;
@@ -18,7 +19,7 @@ public class SchemeServiceImpl implements SchemeService {
     private final SchemeRepository schemeRepository;
 
     @Override
-    public List<Scheme> getSchemes(SchemeType type, String state, Category category) {
+    public List<Scheme> getSchemes(SchemeType type, State state, Category category)  {
 
         return schemeRepository.findAll(
                 SchemeSpecification.filterSchemes(type, state, category)

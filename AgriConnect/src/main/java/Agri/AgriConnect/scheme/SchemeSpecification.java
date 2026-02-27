@@ -3,13 +3,14 @@ package Agri.AgriConnect.scheme;
 import Agri.AgriConnect.Entity.Scheme;
 import Agri.AgriConnect.Enum.Category;
 import Agri.AgriConnect.Enum.SchemeType;
+import Agri.AgriConnect.Enum.State;
 import org.springframework.data.jpa.domain.Specification;
 
 public class SchemeSpecification {
 
     public static Specification<Scheme> filterSchemes(
             SchemeType type,
-            String state,
+            State state,
             Category category
     ) {
         return (root, query, cb) -> {
@@ -21,10 +22,9 @@ public class SchemeSpecification {
                         cb.equal(root.get("type"), type));
             }
 
-            if (state != null && !state.isBlank()) {
+            if (state != null) {
                 predicate = cb.and(predicate,
-                        cb.equal(cb.lower(root.get("state")),
-                                state.toLowerCase()));
+                        cb.equal(root.get("state"), state));
             }
 
             if (category != null) {

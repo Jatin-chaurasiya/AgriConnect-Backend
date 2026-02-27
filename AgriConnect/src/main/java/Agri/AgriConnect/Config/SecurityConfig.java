@@ -38,7 +38,8 @@ public class SecurityConfig {
                                 "/auth/register",
                                 "/auth/login",
                                 "/weather/**",
-                                "/chat/**"
+                                "/chat/**",
+                                "/schemes/**"
                         ).permitAll()
                         .anyRequest().authenticated()
                 )

@@ -2,6 +2,7 @@ package Agri.AgriConnect.Entity;
 
 import Agri.AgriConnect.Enum.Category;
 import Agri.AgriConnect.Enum.SchemeType;
+import Agri.AgriConnect.Enum.State;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -31,8 +32,9 @@ public class Scheme {
     @NotNull(message = "Type is required")
     private SchemeType type;
 
-    @NotBlank(message = "State is required")
-    private String state;
+    @Enumerated(EnumType.STRING)
+    @NotNull(message = "State is required")
+    private State state;
 
     @Enumerated(EnumType.STRING)
     @NotNull(message = "Category is required")
