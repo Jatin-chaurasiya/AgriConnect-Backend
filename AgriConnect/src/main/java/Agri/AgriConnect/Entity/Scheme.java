@@ -39,4 +39,19 @@ public class Scheme {
     @Enumerated(EnumType.STRING)
     @NotNull(message = "Category is required")
     private Category category;
+
+    @Column(name = "image_url")
+    private String imageUrl;
+
+    @Column(name = "apply_link")
+    private String applyLink;
+
+    @Column(columnDefinition = "TEXT")
+    private String process;
+
+    @Column(columnDefinition = "TEXT")
+    private String eligibility;
+
+    @Column(columnDefinition = "TEXT")
+    private String benefits;
 }
