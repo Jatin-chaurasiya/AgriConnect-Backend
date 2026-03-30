@@ -8,7 +8,9 @@ import Agri.AgriConnect.Repository.SchemeRepository;
 import Agri.AgriConnect.Service.SchemeService;
 import Agri.AgriConnect.scheme.SchemeSpecification;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -19,10 +21,16 @@ public class SchemeServiceImpl implements SchemeService {
     private final SchemeRepository schemeRepository;
 
     @Override
-    public List<Scheme> getSchemes(SchemeType type, State state, Category category)  {
-
+    public List<Scheme> getSchemes(SchemeType type, State state, Category category) {
         return schemeRepository.findAll(
                 SchemeSpecification.filterSchemes(type, state, category)
         );
+    }
+
+    @Override
+    public Scheme getSchemeById(Long id) {
+        return schemeRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(
+                        HttpStatus.NOT_FOUND, "Scheme not found with id: " + id));
     }
 }

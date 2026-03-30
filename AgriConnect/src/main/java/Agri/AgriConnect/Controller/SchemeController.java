@@ -25,4 +25,9 @@ public class SchemeController {
     ) {
         return schemeService.getSchemes(type, state, category);
     }
+
+    @GetMapping("/{id}")
+    public Scheme getSchemeById(@PathVariable Long id) {
+        return schemeService.getSchemeById(id);
+    }
 }

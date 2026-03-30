@@ -9,4 +9,5 @@ import java.util.List;
 
 public interface SchemeService {
     List<Scheme> getSchemes(SchemeType type, State state, Category category);
+    Scheme getSchemeById(Long id);
 }
