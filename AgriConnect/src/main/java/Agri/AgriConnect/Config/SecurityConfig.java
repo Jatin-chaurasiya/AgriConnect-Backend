@@ -41,7 +41,8 @@ public class SecurityConfig {
                                 "/weather/**",
                                 "/chat/**",
                                 "/schemes",
-                                "/schemes/**"
+                                "/schemes/**",
+                                "/api/crop/**"
                         ).permitAll()
                         .anyRequest().authenticated()
                 )
